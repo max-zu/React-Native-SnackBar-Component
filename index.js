@@ -245,7 +245,7 @@ SnackbarComponent.propTypes = {
       action_text: PropTypes.any,
     },
   }),
-  actionText: PropTypes.oneOf([PropTypes.string, PropTypes.element ]),
+  actionText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   visible: PropTypes.bool,
 };
 
