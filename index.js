@@ -238,12 +238,10 @@ SnackbarComponent.propTypes = {
   actionHandler: PropTypes.func,
   textMessage: PropTypes.string,
   styles: PropTypes.shape({
-    styles: {
-      limit_container: PropTypes.any,
-      container: PropTypes.any,
-      text_msg: PropTypes.any,
-      action_text: PropTypes.any,
-    },
+    limit_container: PropTypes.any,
+    container: PropTypes.any,
+    text_msg: PropTypes.any,
+    action_text: PropTypes.any,
   }),
   actionText: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   visible: PropTypes.bool,
