@@ -30,12 +30,14 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 9999,
+    elevation: 10,
   },
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     position: 'absolute',
+    elevation: 10,
   },
   text_msg: {
     fontSize: 14,
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingTop: 14,
     paddingBottom: 14,
+    elevation: 10,
   },
   action_text: {
     fontSize: 14,
@@ -87,7 +90,9 @@ class SnackbarComponent extends Component {
         style={[
           styles.limit_container,
           {
-            height: translateValue.interpolate({ inputRange: [0, 1], outputRange: [0, hideDistance] }),
+            height: translateValue.interpolate({
+              inputRange: [0, 1], outputRange: [0, hideDistance],
+            }),
             backgroundColor,
           },
           position === 'bottom' ? { bottom } : { top: bottom },
@@ -103,8 +108,12 @@ class SnackbarComponent extends Component {
               right,
             },
             position === 'bottom'
-              ? { bottom: translateValue.interpolate({ inputRange: [0, 1], outputRange: [hideDistance * -1, 0] }) }
-              : { top: translateValue.interpolate({ inputRange: [0, 1], outputRange: [hideDistance * -1, 0] }) },
+              ? { bottom: translateValue.interpolate({
+                inputRange: [0, 1], outputRange: [hideDistance * -1, 0],
+              }) }
+              : { top: translateValue.interpolate({
+                inputRange: [0, 1], outputRange: [hideDistance * -1, 0],
+              }) },
             propsStyles.container,
           ]}
           onLayout={(event) => {
@@ -163,8 +172,7 @@ class SnackbarComponent extends Component {
         },
       ).start();
       if (nextProps.autoHidingTime) {
-        const hideFunc = this.hideSnackbar.bind(this);
-        setTimeout(hideFunc, nextProps.autoHidingTime);
+        setTimeout(this.props.actionHandler, nextProps.autoHidingTime);
       }
     } else if ((!nextProps.visible) && (this.props.visible)) {
       this.hideSnackbar();
